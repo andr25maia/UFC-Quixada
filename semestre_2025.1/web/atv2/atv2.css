@@ -42,7 +42,6 @@ a {
 table, th, td {
     color: #0a0a0a;
     border: #df6363 1px solid;
-    border-radius: 5px;
     border-collapse: collapse;
     width: 50%;
     margin: 20px 0;
