@@ -24,8 +24,12 @@ img {
     width: 40%;
     height: auto;
 }
-div{
+div {
+    display: flex;
+    margin: auto;
     text-align: center;
+    justify-content: center;
+
 }
 p {
     color: #0a0a0a;
@@ -38,7 +42,6 @@ a {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
 }
-
 table, th, td {
     color: #0a0a0a;
     border: #df6363 1px solid;
