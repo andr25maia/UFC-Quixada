@@ -5,81 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 3</title>
     <link rel="stylesheet" href="atv3.css">
-
 </head>
 <body id="corpo">
-    <header id="cabecalho">
-        <h1 id="nome">Meus Pokémon Favoritos </h1>
-    </header>
-    <nav id="menu">
-            <a href="#gengar">Gengar</a>
-            <a href="#jolteon">Jolteon</a>
-            <a href="#leavanny">Leavanny</a>
-            <a href="#gardevoir">Gardevoir</a>
-            <a href="#galvantula">Galvantula</a>
-            <a href="#sylveon">Sylveon</a>
-            <a href="#starmie">Starmie</a>
-            <button id ="botao" onclick="escuro()">🌙</button>
-    </nav>
-    <main id="principal">
-        <aside id="menu-lateral">
-            <h2>Sobre mim:</h2>
-            <p>Foto minha:</p>
-            <img src = "https://si3.ufc.br/sigaa/verFoto?idArquivo=3169933&key=9aa8b0c0c131cbe377e25e9c5d546de6" alt = "Foto minha">
-            <p>Meu nome é André Maia da Costa, estudo na UFC Quíxada no curso de EC - Engenharia da Computação.</p>
-            <h3>Sobre o Campus UFC Quíxada:</h3>
-            <article><p>O Campus de Quixadá, criado como unidade acadêmica através do Provimento nº 07/CONSUNI, de 04 de setembro de 2006, iniciou suas atividades em 2007 com o curso de Bacharelado em Sistemas de Informação, diurno, em instalações cedidas pela Prefeitura Municipal de Quixadá provisoriamente no prédio que sediou a Empresa de Pesquisa Agropecuária do Ceará (Epace). No ano de 2010, foram criados mais dois novos cursos, a saber: o Bacharelado em Engenharia de Software, diurno; e, o curso Tecnológico em Redes de Computadores, noturno.</p>
+    <!-- Cabeçalho da página -->
+<header id="cabecalho">
+    <h1 id="nome">Meus Pokémon Favoritos </h1>
+</header>
+    <!-- Menu de navegação -->
+<nav id="menu">
+    <a href="#gengar">Gengar</a>
+    <a href="#jolteon">Jolteon</a>
+    <a href="#leavanny">Leavanny</a>
+    <a href="#gardevoir">Gardevoir</a>
+    <a href="#galvantula">Galvantula</a>
+    <a href="#sylveon">Sylveon</a>
+    <a href="#starmie">Starmie</a>
+    <!-- Botão para alternar modo escuro/claro -->
+    <button id="botao" onclick="escuro()">🌙</button>
+</nav>
+<main id="principal">
+    <!-- Menu lateral com informações pessoais e do campus -->
+    <aside id="menu-lateral">
+        <h2>Sobre mim:</h2>
+        <p>Foto minha:</p>
+        <img src="https://si3.ufc.br/sigaa/verFoto?idArquivo=3169933&key=9aa8b0c0c131cbe377e25e9c5d546de6" alt="Foto minha">
+        <p>Meu nome é André Maia da Costa, estudo na UFC Quíxada no curso de EC - Engenharia da Computação.</p>
+        <h3>Sobre o Campus UFC Quíxada:</h3>
+        <article>
+            <!-- Informações sobre o campus -->
+            <p>O Campus de Quixadá, criado como unidade acadêmica através do Provimento nº 07/CONSUNI, de 04 de setembro de 2006, iniciou suas atividades em 2007 com o curso de Bacharelado em Sistemas de Informação, diurno, em instalações cedidas pela Prefeitura Municipal de Quixadá provisoriamente no prédio que sediou a Empresa de Pesquisa Agropecuária do Ceará (Epace). No ano de 2010, foram criados mais dois novos cursos, a saber: o Bacharelado em Engenharia de Software, diurno; e, o curso Tecnológico em Redes de Computadores, noturno.</p>
             <p>Em 2011, o Campus de Quixadá passou a funcionar em um novo prédio, localizado na Rua José de Alencar, s/n, Bairro São João, Quixadá-CE. O novo prédio foi construído com recursos do Programa de Apoio a Planos de Reestruturação e Expansão das Universidades Federais (REUNI), com o objetivo de atender à demanda crescente por cursos superiores na região do Sertão Central do Ceará.</p>
             <p>O Campus de Quixadá é uma unidade acadêmica da Universidade Federal do Ceará (UFC) e oferece cursos de graduação nas áreas de Tecnologia da Informação e Comunicação (TIC), Engenharia de Computação e Design Digital. O campus tem como objetivo formar profissionais qualificados para atuar no mercado de trabalho, contribuindo para o desenvolvimento da região e do país.</p>
             <p>Além dos cursos de graduação, o Campus de Quixadá também oferece programas de pós-graduação, extensão e pesquisa, com ênfase em áreas como inteligência artificial, computação em nuvem, redes de computadores e design digital. O campus conta com laboratórios equipados com tecnologia de ponta e uma infraestrutura adequada para atender às necessidades dos alunos e professores.</p>
-            <p>O Campus de Quixadá é conhecido por sua excelência acadêmica e por promover a inclusão social, oferecendo oportunidades de formação para estudantes de diferentes origens e realidades sociais. O campus também desenvolve projetos de extensão e pesquisa em parceria com a comunidade local, visando contribuir para o desenvolvimento sustentável da região.</p></article>
-            <h3>Imagens UFC - Quíxada:</h3> 
-            <img src="https://pbs.twimg.com/media/FTh-N0cXwAEH3uZ.jpg" alt="UFC Quixadá">
-            <img src="https://live.staticflickr.com/1756/40840717140_75a8ce36a0_b.jpg" alt="UFC Quixadá">
-            <img src="https://www.ufc.br/images/_images/noticias/2023/ft_230524_quixada_gr.png" alt="UFC Quixadá">
-        </aside>
-        <content id="conteudo">
-            <h2>Pokémom</h2>
-            <h3 id="gengar">Gengar:</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/094.png" alt="Gengar">
-            <article>Gengar é um Pokémon do tipo Fantasma/Venenoso introduzido na primeira geração. Ele é conhecido por sua aparência sombria e sorriso malicioso, e é frequentemente associado a travessuras e brincadeiras. Gengar tem a habilidade de se esconder nas sombras e pode causar pesadelos em seus oponentes.
-                Ele evolui de Haunter quando trocado e é a forma final de Gastly. Gengar é conhecido por sua velocidade e poder especial, tornando-o um Pokémon popular entre os treinadores. Ele também é famoso por sua habilidade de aprender uma variedade de movimentos, incluindo ataques do tipo Fantasma e Venenoso.</article>
-            <h3 id="jolteon">Jolteon</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/135.png" alt="Jolteon">
-            <article>Jolteon é um Pokémon do tipo Elétrico introduzido na primeira geração. Ele é conhecido por sua aparência semelhante a um gato e sua pelagem amarela e espinhosa. Jolteon é famoso por sua velocidade e agilidade, tornando-o um dos Pokémon mais rápidos da franquia.
-                Ele evolui de Eevee quando exposto a uma Pedra do Trovão. Jolteon tem a habilidade de gerar eletricidade e pode aprender uma variedade de movimentos elétricos poderosos, como Thunderbolt e Volt Tackle. Ele é frequentemente usado em batalhas devido à sua alta velocidade e ataque especial.</article>
-            <h3 id="leavanny">Leavanny</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/542.png" alt="Leavanny">
-            <article>Leavanny é um Pokémon do tipo Inseto/Grama introduzido na quinta geração. Ele é conhecido por sua aparência semelhante a uma folha e sua habilidade de costurar roupas para seus companheiros Pokémon. Leavanny é frequentemente associado à natureza e à proteção de seus aliados.
-                Ele evolui de Swadloon quando sua felicidade chega ao máximo. Leavanny tem a habilidade de aprender uma variedade de movimentos do tipo Inseto e Grama, tornando-o um Pokémon versátil em batalhas. Ele também é conhecido por sua habilidade de curar outros Pokémon com seu movimento Heal Pulse.</article>
-            <h3 id="gardevoir">Gardevoir</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/282.png" alt="Gardevoir">
-            <article>Gardevoir é um Pokémon do tipo Psíquico/Fada introduzido na terceira geração. Ele é conhecido por sua aparência elegante e sua habilidade de prever o futuro. Gardevoir é frequentemente associado à proteção de seus treinadores e é conhecido por sua lealdade.
-                Ele evolui de Kirlia por level. Gardevoir tem a habilidade de aprender uma variedade de movimentos psíquicos e de fada, tornando-o um Pokémon poderoso em batalhas. Ele também é famoso por sua habilidade de Mega Evoluir, tornando-se ainda mais forte.</article>
-            <h3 id="galvantula">Galvantula</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/596.png" alt="Galvantula">
-            <article>Galvantula é um Pokémon do tipo Inseto/Elétrico introduzido na quinta geração. Ele é conhecido por sua aparência semelhante a uma aranha e sua habilidade de gerar eletricidade. Galvantula é frequentemente associado à velocidade e agilidade, tornando-o um Pokémon difícil de pegar.
-                Ele evolui de Joltik quando atinge o nível 36. Galvantula tem a habilidade de aprender uma variedade de movimentos elétricos e insetos, tornando-o um Pokémon versátil em batalhas. Ele também é famoso por sua habilidade de criar teias elétricas para capturar seus oponentes.</article>
-            <h3 id="sylveon">Sylveon</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/700.png" alt="Sylveon">
-            <article>Sylveon é um Pokémon do tipo Fada introduzido na sexta geração. Ele é conhecido por sua aparência adorável e sua habilidade de criar laços emocionais com seus treinadores. Sylveon é frequentemente associado à amizade e à proteção de seus aliados.
-                Ele evolui de Eevee por amizade se tiver um movimento do tipo Fada em seu arcenal. Sylveon tem a habilidade de aprender uma variedade de movimentos do tipo Fada, tornando-o um Pokémon poderoso em batalhas. Ele também é famoso por sua habilidade de curar outros Pokémon com seu movimento Wish.</article>
-            <h3 id="starmie">Starmie</h3>
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/121.png" alt="Starmie">
-            <article>Starmie é um Pokémon do tipo Água/Psíquico introduzido na primeira geração. Ele é conhecido por sua aparência semelhante a uma estrela-do-mar e sua habilidade de gerar eletricidade. Starmie é frequentemente associado à velocidade e agilidade, tornando-o um Pokémon difícil de pegar.
-                Ele evolui de Staryu quando exposto a uma Pedra da Água. Starmie tem a habilidade de aprender uma variedade de movimentos aquáticos, psíquicos, gelo e até eletrícos, tornando-o um Pokémon versátil em batalhas. Ele também é famoso por sua habilidade de Mega Evoluir, tornando-se ainda mais forte.</article>
-        </content>
-    </main>
-    <footer id="rodape">
-         <p>&copy; 2025 Meu Pokemon Favoritos</p>
-    <p>Desenvolvido por André Maia Da Costa</p>
-    <p>Contato: andr25maia@gmail.com</p>
+            <p>O Campus de Quixadá é conhecido por sua excelência acadêmica e por promover a inclusão social, oferecendo oportunidades de formação para estudantes de diferentes origens e realidades sociais. O campus também desenvolve projetos de extensão e pesquisa em parceria com a comunidade local, visando contribuir para o desenvolvimento sustentável da região.</p>
+        </article>
+        <h3>Imagens UFC - Quíxada:</h3> 
+        <!-- Imagens do campus -->
+        <img src="https://pbs.twimg.com/media/FTh-N0cXwAEH3uZ.jpg" alt="UFC Quixadá">
+        <img src="https://live.staticflickr.com/1756/40840717140_75a8ce36a0_b.jpg" alt="UFC Quixadá">
+        <img src="https://www.ufc.br/images/_images/noticias/2023/ft_230524_quixada_gr.png" alt="UFC Quixadá">
+    </aside>
+    <!-- Conteúdo principal sobre os Pokémon favoritos -->
+    <content id="conteudo">
+        <h2>Pokémom</h2>
+        <!-- Seção de cada Pokémon -->
+        <h3 id="gengar">Gengar:</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/094.png" alt="Gengar">
+        <article>
+            Gengar é um Pokémon do tipo Fantasma/Venenoso introduzido na primeira geração. Ele é conhecido por sua aparência sombria e sorriso malicioso, e é frequentemente associado a travessuras e brincadeiras. Gengar tem a habilidade de se esconder nas sombras e pode causar pesadelos em seus oponentes.
+            Ele evolui de Haunter quando trocado e é a forma final de Gastly. Gengar é conhecido por sua velocidade e poder especial, tornando-o um Pokémon popular entre os treinadores. Ele também é famoso por sua habilidade de aprender uma variedade de movimentos, incluindo ataques do tipo Fantasma e Venenoso.
+        </article>
+        <h3 id="jolteon">Jolteon</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/135.png" alt="Jolteon">
+        <article>
+            Jolteon é um Pokémon do tipo Elétrico introduzido na primeira geração. Ele é conhecido por sua aparência semelhante a um gato e sua pelagem amarela e espinhosa. Jolteon é famoso por sua velocidade e agilidade, tornando-o um dos Pokémon mais rápidos da franquia.
+            Ele evolui de Eevee quando exposto a uma Pedra do Trovão. Jolteon tem a habilidade de gerar eletricidade e pode aprender uma variedade de movimentos elétricos poderosos, como Thunderbolt e Volt Tackle. Ele é frequentemente usado em batalhas devido à sua alta velocidade e ataque especial.
+        </article>
+        <h3 id="leavanny">Leavanny</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/542.png" alt="Leavanny">
+        <article>
+            Leavanny é um Pokémon do tipo Inseto/Grama introduzido na quinta geração. Ele é conhecido por sua aparência semelhante a uma folha e sua habilidade de costurar roupas para seus companheiros Pokémon. Leavanny é frequentemente associado à natureza e à proteção de seus aliados.
+            Ele evolui de Swadloon quando sua felicidade chega ao máximo. Leavanny tem a habilidade de aprender uma variedade de movimentos do tipo Inseto e Grama, tornando-o um Pokémon versátil em batalhas. Ele também é conhecido por sua habilidade de curar outros Pokémon com seu movimento Heal Pulse.
+        </article>
+        <h3 id="gardevoir">Gardevoir</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/282.png" alt="Gardevoir">
+        <article>
+            Gardevoir é um Pokémon do tipo Psíquico/Fada introduzido na terceira geração. Ele é conhecido por sua aparência elegante e sua habilidade de prever o futuro. Gardevoir é frequentemente associado à proteção de seus treinadores e é conhecido por sua lealdade.
+            Ele evolui de Kirlia por level. Gardevoir tem a habilidade de aprender uma variedade de movimentos psíquicos e de fada, tornando-o um Pokémon poderoso em batalhas. Ele também é famoso por sua habilidade de Mega Evoluir, tornando-se ainda mais forte.
+        </article>
+        <h3 id="galvantula">Galvantula</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/596.png" alt="Galvantula">
+        <article>
+            Galvantula é um Pokémon do tipo Inseto/Elétrico introduzido na quinta geração. Ele é conhecido por sua aparência semelhante a uma aranha e sua habilidade de gerar eletricidade. Galvantula é frequentemente associado à velocidade e agilidade, tornando-o um Pokémon difícil de pegar.
+            Ele evolui de Joltik quando atinge o nível 36. Galvantula tem a habilidade de aprender uma variedade de movimentos elétricos e insetos, tornando-o um Pokémon versátil em batalhas. Ele também é famoso por sua habilidade de criar teias elétricas para capturar seus oponentes.
+        </article>
+        <h3 id="sylveon">Sylveon</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/700.png" alt="Sylveon">
+        <article>
+            Sylveon é um Pokémon do tipo Fada introduzido na sexta geração. Ele é conhecido por sua aparência adorável e sua habilidade de criar laços emocionais com seus treinadores. Sylveon é frequentemente associado à amizade e à proteção de seus aliados.
+            Ele evolui de Eevee por amizade se tiver um movimento do tipo Fada em seu arcenal. Sylveon tem a habilidade de aprender uma variedade de movimentos do tipo Fada, tornando-o um Pokémon poderoso em batalhas. Ele também é famoso por sua habilidade de curar outros Pokémon com seu movimento Wish.
+        </article>
+        <h3 id="starmie">Starmie</h3>
+        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/121.png" alt="Starmie">
+        <article>
+            Starmie é um Pokémon do tipo Água/Psíquico introduzido na primeira geração. Ele é conhecido por sua aparência semelhante a uma estrela-do-mar e sua habilidade de gerar eletricidade. Starmie é frequentemente associado à velocidade e agilidade, tornando-o um Pokémon difícil de pegar.
+            Ele evolui de Staryu quando exposto a uma Pedra da Água. Starmie tem a habilidade de aprender uma variedade de movimentos aquáticos, psíquicos, gelo e até eletrícos, tornando-o um Pokémon versátil em batalhas. Ele também é famoso por sua habilidade de Mega Evoluir, tornando-se ainda mais forte.
+        </article>
+    </content>
+</main>
+    <!-- Rodapé da página -->
+    <footer id="rodape"></footer>
+        <p>&copy; 2025 Meu Pokemon Favoritos</p>
+        <p>Desenvolvido por André Maia Da Costa</p>
+        <p>Contato: andr25maia@gmail.com</p>
     </footer>
 </body>
+<!-- Script para alternar entre modo claro e escuro -->
 <script>
     let verdade = true;
 
     function escuro() {
+        // Seleciona elementos
         let cabecalho = document.getElementById("cabecalho"); 
         let corpo = document.getElementById("corpo");
         let nome = document.getElementById("nome");
@@ -89,6 +115,7 @@
         let botao = document.getElementById("botao")
         let links = menu.querySelectorAll("a");
         if (verdade) {
+            // Ativa modo escuro
             corpo.style.backgroundColor = "#000";
             corpo.style.color = "ghostwhite";
             cabecalho.style.backgroundColor = "#000000";
@@ -105,12 +132,14 @@
             botao.style.border = "5px solid #afa92e";
             botao.style.backgroundColor = "#ece33d"
             botao.textContent = "☀️"
+            // Efeito hover no botão modo escuro
             botao.onmouseover = function() {
                 botao.style.backgroundColor = "#afa92e";
             };
             botao.onmouseout = function() {
                 botao.style.backgroundColor = "#ece33d";
             };
+            // Efeito hover nos links do menu
             links.forEach(function(link) {
                 link.onmouseover = function() {
                     link.style.backgroundColor = "#afa92e";
@@ -123,6 +152,7 @@
 
             verdade = false;
         } else {
+            // Retorna ao modo claro padrão
             corpo.style.backgroundColor = "";
             corpo.style.color = "";
             cabecalho.style.backgroundColor = "";
@@ -141,13 +171,15 @@
             botao.style.backgroundColor = ""
             botao.style.border = "";
             botao.textContent = "🌙"
+            // Remove efeito hover do botão
             botao.onmouseover = function() {
                 botao.style.backgroundColor = "";
             };
             botao.onmouseout = function() {
                 botao.style.backgroundColor = "";
             };
-             links.forEach(function(link) {
+            // Remove efeito hover dos links
+            links.forEach(function(link) {
                 link.onmouseover = function() {
                     link.style.backgroundColor = "";
                 };

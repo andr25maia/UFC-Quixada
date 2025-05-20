@@ -1,12 +1,12 @@
         /* CSS para a atividade */
         * { 
-            box-sizing: border-box; 
+            box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho dos elementos */
         }
 
         body { 
             margin: 0;
             padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif; /* Fonte padrão para melhor legibilidade */
         }
         header { 
             background-color: #bc1a1a; 
@@ -14,12 +14,12 @@
             text-align: center;
             padding: 30px 0px;
         }
-     
+         
         nav { 
             background-color: black; 
             color: white; 
-            display: flex;
-            position: sticky;
+            display: flex; /* Layout flexível para navegação */
+            position: sticky; /* Mantém o menu fixo no topo ao rolar */
             top: 0;
             bottom: 0;
         }
@@ -33,22 +33,21 @@
             color: white;
         }
         main { 
-            display: flex; 
-            justify-content: space-between; 
+            display: flex; /* Layout flexível para o conteúdo principal */
             padding: 0; 
         }
         aside {
-            flex: 30%;
+            flex: 30%; /* Ocupa 30% do espaço horizontal */
             background-color: #f1f1f1;
             padding: 10px;
             margin: 0px;
         }
-        aside img {;
+        aside img {
             padding: 5px;
             height: 200px;
         }
         content {
-            flex: 70%;
+            flex: 70%; /* Ocupa 70% do espaço horizontal */
             padding: 10px;
         }
         footer { 
@@ -65,7 +64,7 @@
             padding: 10px 20px;
             cursor: pointer;
             margin: 0px 4px;
-            border-radius: 10px;
+            border-radius: 10px; /* Bordas arredondadas para o botão */
         }
         button:hover {
             background-color: #ddd;
@@ -75,14 +74,14 @@
         }
         @media screen and (max-width: 500px) {
             nav, main{
-                flex-direction: column;
-                align-items: center;
+            flex-direction: column; /* Layout vertical em telas pequenas */
+            align-items: center;
             }
             content, aside { 
-                width: 100%; 
+            width: 100%; /* Ocupa toda a largura em telas pequenas */
             }
             button {
-                margin-left: 0px;
-                width: 40px;
-            }
+            margin-left: 0px;
+            width: 40px;
+            } 
         }
