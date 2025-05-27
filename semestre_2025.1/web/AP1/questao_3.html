@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }  
+        img {
+            width: 200px;
+            height: 200px;
+        } 
+    </style>
+</head>
+<body> 
+    <img id = "poke" src ="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="Pokémom">
+        <button onclick="voltar()"> < Voltar -1</button>
+        <button onclick="avancar()"> + 1 Avançar > </button>
+    <script>
+        let id = 1;
+
+        function avancar() {
+            id++;
+            if (id > 100) {
+                id = 1;
+            }
+            document.getElementById("poke").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+        }
+
+        function voltar() {
+            id--;
+            if (id < 1) {
+                id = 100;
+            }
+            document.getElementById("poke").src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+        }
+    </script>
+</body>
+</html>
