@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Alunos</title>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+    <div id="alunosTable"></div>
+    <button onclick="fetchAlunos()">Atualizar Lista</button>
+    <p>Para criar um novo aluno, <a href="criar_aluno.cliente.html">clique aqui</a>.</p>
+
+    <script>
+    // Função para buscar e exibir os alunos
+    async function fetchAlunos() {
+        try {
+            const response = await fetch('http://localhost:3000/alunos/listar');
+            if (!response.ok) {
+                throw new Error('Erro ao buscar alunos');
+            }
+            const alunos = await response.json();
+
+            // Cria a tabela
+            const table = document.createElement('table');
+            table.border = '1';
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const thNome = document.createElement('th');
+            thNome.textContent = 'Nome';
+            headerRow.appendChild(thNome);
+
+            const thIra = document.createElement('th');
+            thIra.textContent = 'IRA';
+            headerRow.appendChild(thIra);
+
+            const thCurso = document.createElement('th');
+            thCurso.textContent = 'Curso';
+            headerRow.appendChild(thCurso);
+            
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            const tbody = document.createElement('tbody');
+            
+            alunos.forEach(aluno => {
+                const row = document.createElement('tr');
+
+                const cellNome = document.createElement('td');
+                cellNome.textContent = aluno.nome;
+                row.appendChild(cellNome);
+
+                const cellIra = document.createElement('td');
+                cellIra.textContent = aluno.ira;
+                row.appendChild(cellIra);
+
+                const cellCurso = document.createElement('td');
+                cellCurso.textContent = aluno.curso;
+                row.appendChild(cellCurso);
+
+                const cellActions = document.createElement('td');
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Excluir';
+                deleteButton.onclick = async () => {
+                    try {
+                        const deleteResponse = await fetch(`http://localhost:3000/alunos/excluir/${aluno.id}`, {
+                            method: 'DELETE'
+                        });
+                        if (!deleteResponse.ok) {
+                            throw new Error('Erro ao excluir aluno');
+                        }
+                        alert('Aluno excluído com sucesso!');
+                        fetchAlunos(); // Atualiza a lista após exclusão
+                    } catch (error) {
+                        console.error('Erro ao excluir aluno:', error);
+                        alert('Erro ao excluir aluno: ' + error.message);
+                    }
+                };
+
+                cellActions.appendChild(deleteButton);
+                row.appendChild(cellActions);
+
+                const cellEdit = document.createElement('td');
+                const editLink = document.createElement('a');
+                editLink.href = `editar_aluno.cliente.html?id=${aluno.id}`;   
+                editLink.textContent = 'Editar';
+                cellEdit.appendChild(editLink);
+                row.appendChild(cellEdit);
+                
+                tbody.appendChild(row);
+            });
+           
+
+        table.appendChild(tbody);
+
+        const divTable = document.getElementById('alunosTable');
+        divTable.innerHTML = '';
+        divTable.appendChild(table);
+
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    }
+
+    // Chama a função ao carregar a página
+    window.onload = fetchAlunos;
+    </script>
+</body>
+</html>
