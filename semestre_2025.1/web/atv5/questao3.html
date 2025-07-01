@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <style>
+        .acima-media {
+            background-color: rgb(233, 109, 109);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Casos de Covid por estado no Brasil</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Abreviação</th>
+                <th>Número de Casos</th>
+                <th>Número de Suspeitos</th>
+                <th>Número de Falecimentos</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-covid">
+
+        </tbody>
+    </table>
+<script>
+    async function carregarDadosCovid() {
+        try {
+            const response = await fetch('https://covid19-brazil-api.vercel.app/api/report/v1');
+            const data = await response.json();
+            const tbody = document.getElementById('tabela-covid');
+            let totalCasos = 0, totalSuspeitos = 0, totalFalecimentos = 0;
+
+            data.data.forEach(estado => {
+                totalCasos += estado.cases;
+                totalSuspeitos += estado.suspects;
+                totalFalecimentos += estado.deaths;
+            });
+
+            const mediaFalecimentos = totalFalecimentos / 27;
+
+            data.data.forEach(estado => {
+                const tr = document.createElement('tr');
+                if (estado.deaths > mediaFalecimentos) {
+                    tr.classList.add('acima-media');
+                }
+                tr.innerHTML = `
+                    <td>${estado.state}</td>
+                    <td>${estado.uf}</td>
+                    <td>${estado.cases}</td>
+                    <td>${estado.suspects}</td>
+                    <td>${estado.deaths}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Adiciona a linha de médias
+            const trMedia = document.createElement('tr');
+            trMedia.innerHTML = `
+                <td colspan="2"><strong>Média</strong></td>
+                <td><strong>${(totalCasos / 27).toFixed(2)}</strong></td>
+                <td><strong>${(totalSuspeitos / 27).toFixed(2)}</strong></td>
+                <td><strong>${mediaFalecimentos.toFixed(2)}</strong></td>
+            `;
+            tbody.appendChild(trMedia);
+        } catch (error) {
+            console.error('Erro ao buscar os dados:', error);
+        }
+    }
+    carregarDadosCovid();
+</script>
+</body>
+</html>
