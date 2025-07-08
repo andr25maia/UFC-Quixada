@@ -98,6 +98,10 @@
         color: red;
         pointer-events: none;
     }
+    .alert {
+        font-size: 1.5em;
+        color: #d60a0a;
+    }
 </style>
 </head>
 <body>
@@ -172,7 +176,8 @@
                             setTimeout(() => {
                                 alert('Parabéns! Você encontrou todos os pares!');
                                 tabuleiro.innerHTML = '';
-                                criarTabuleiro();
+                                imagens.length = 0;
+                                carregarImagens();
                             }, 100);
                         }
                     } else {
