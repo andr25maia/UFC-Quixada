@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Questão 1</title>
+	<style>
+		body {
+			padding: 20px;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+		}
+		thead {
+			background-color: #333;
+			color: #fff;
+		}
+		th, td {
+			padding: 12px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		.acima-media {
+			background-color: #fff3cd;
+		}
+		.mais-barato {
+			background-color: #d4edda;
+		}
+		.mais-caro {
+			background-color: #f8d7da;
+		}
+		.erro {
+			color: red;
+			font-weight: bold;
+		}
+		span {
+			display: inline-block;
+			margin-top: 10px;
+			padding: 5px 10px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Lista de Produtos</h1>
+	<div id="resultado">Carregando produtos...</div>
+
+	<span class="acima-media">Acima da Média</span>
+	<span class="mais-barato">Mais Barato</span>
+	<span class="mais-caro">Mais Caro</span>
+
+	<script>
+		function obterProdutosComPromessa() {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					const numero = Math.floor(Math.random() * 100);
+					console.log("Número gerado:", numero);
+
+					if (numero % 2 === 0) {
+						const produtos = [
+							{ id: 1, nome: "Camiseta", tipo: "Roupas", preco: 59.90 },
+							{ id: 2, nome: "Notebook", tipo: "Eletrônicos", preco: 4299.99 },
+							{ id: 3, nome: "Livro", tipo: "Educação", preco: 39.90 },
+							{ id: 4, nome: "Fone de ouvido", tipo: "Eletrônicos", preco: 199.99 },
+							{ id: 5, nome: "Tênis", tipo: "Calçados", preco: 299.90 },
+							{ id: 6, nome: "Relógio", tipo: "Acessórios", preco: 849.00 },
+							{ id: 7, nome: "Cadeira Gamer", tipo: "Móveis", preco: 1199.00 },
+							{ id: 8, nome: "Caneca", tipo: "Utilidades", preco: 29.90 },
+							{ id: 9, nome: "Smartphone", tipo: "Eletrônicos", preco: 2699.99 },
+							{ id: 10, nome: "Mochila", tipo: "Acessórios", preco: 189.00 }
+						];
+						resolve(produtos);
+					} else {
+						reject({ res: "ERROR", msg: "ERRO NO SISTEMA" });
+					}
+				}, 4000);
+			});
+		}
+
+		async function carregarProdutos() {
+			const div = document.getElementById('resultado');
+			div.innerHTML = "Carregando produtos...";
+
+			try {
+				const produtos = await obterProdutosComPromessa();
+				const precos = produtos.map(p => p.preco);
+				let media = 0;
+
+				if (precos.length === 0) {
+					throw { res: "ERROR", msg: "Nenhum produto encontrado." };
+				}
+
+				for (let p of precos) {
+					media += p;
+				}
+				media /= precos.length;
+
+				const maisCaro = Math.max(...precos);
+				const maisBarato = Math.min(...precos);
+
+				let tabela = `<p>Média de preços: R$ ${media.toFixed(2).replace('.', ',')}</p>`;
+				tabela += `<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Preço (R$)</th>
+						</tr>
+					</thead>
+					<tbody>`;
+
+				for (let p of produtos) {
+					let classes = [];
+					if (p.preco > media) classes.push("acima-media");
+					if (p.preco === maisCaro) classes.push("mais-caro");
+					if (p.preco === maisBarato) classes.push("mais-barato");
+
+					tabela += `<tr class="${classes.join(' ')}">
+						<td>${p.id}</td>
+						<td>${p.nome}</td>
+						<td>${p.tipo}</td>
+						<td>R$ ${p.preco.toFixed(2).replace('.', ',')}</td>
+					</tr>`;
+				}
+
+				tabela += `</tbody></table>`;
+				div.innerHTML = tabela;
+
+			} catch (erro) {
+				div.innerHTML = `<p class="erro">${erro.res}: ${erro.msg}</p>`;
+			}
+		}
+
+		carregarProdutos();
+	</script>
+
+</body>
+</html>

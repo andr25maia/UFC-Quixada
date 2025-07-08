@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Questão 2</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+    h1 {
+        color: #f3efef;
+        background-color: #d60a0a;
+        border-bottom: 2px solid #dee2e6;
+        padding: 20px;
+        margin: 0 auto 20px auto;
+        width: 80%;
+    }
+    #tabuleiro {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        gap: 10px;
+        justify-content: center;
+    }
+    .carta {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10%;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .carta.escondida {
+        background: linear-gradient(to bottom, #d60a0a 50%, white 50%);
+        border: 3px solid black;
+        transition: all 0.3s ease;
+    }
+    .carta.escondida::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 15px;
+        height: 15px;
+        background: black;
+        border: 3px solid #faf5f5;
+        border-radius: 50%;
+        z-index: 2;
+    }
+    .carta.revelada {
+        background-color: white;
+        border: 3px solid #ccc;
+    }
+    .carta.revelada img {
+        border-radius: 50%;
+        height: 80px;
+        z-index: 1;
+    }
+    .carta.certa {
+        background-color: #d4edda;
+        border: 3px solid green;
+    }
+    .carta.certa::after {
+        content: "✓";
+        font-weight: bold;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 6em;
+        color: green;
+        pointer-events: none;
+        z-index: 1;
+    }
+    .carta.erro {
+        background-color: #f8d7da;
+        border: 3px solid red;
+    }
+    .carta.erro::after {
+        content: "✖";
+        font-weight: bold;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 6em;
+        color: red;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+
+<h1>Pokémon Jogo da Memória</h1>
+<div id="tabuleiro"></div>
+
+<script>
+    const imagens = [];
+
+    async function carregarImagens() {
+        const ids = new Set();
+        while (ids.size < 8) {
+            ids.add(Math.floor(Math.random() * 1025) + 1);
+        }
+
+        for (let id of ids) {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+            const p = await res.json();
+            imagens.push(p.sprites.front_default);
+        }
+
+        iniciarJogo();
+    }
+
+    function iniciarJogo() {
+        const pares = imagens.concat(imagens).sort(() => 0.5 - Math.random());
+        const tabuleiro = document.getElementById('tabuleiro');
+        let primeiraCarta = null;
+        let travado = false;
+
+        function criarTabuleiro() {
+            pares.forEach((imgUrl) => {
+                const carta = document.createElement('div');
+                carta.classList.add('carta', 'escondida');
+                carta.dataset.img = imgUrl;
+                tabuleiro.appendChild(carta);
+            });
+        }
+
+        function revelar(carta) {
+            carta.classList.remove('escondida');
+            carta.innerHTML = `<img src="${carta.dataset.img}" alt="pokemon">`;
+            carta.classList.add('revelada');
+        }
+
+        function esconder(carta) {
+            carta.classList.add('escondida');
+            carta.innerHTML = '';
+            carta.classList.remove('revelada');
+        }
+
+        tabuleiro.addEventListener('click', function (e) {
+            const carta = e.target.closest('.carta');
+            if (!carta || carta.classList.contains('revelada') || travado) return;
+
+            if (!primeiraCarta) {
+                primeiraCarta = carta;
+                revelar(carta);
+            } else {
+                revelar(carta);
+                travado = true;
+
+                setTimeout(() => {
+                    if (primeiraCarta.dataset.img === carta.dataset.img) {
+                        primeiraCarta.classList.add('certa');
+                        carta.classList.add('certa');
+                        primeiraCarta = null;
+                        travado = false;
+                        
+                        if (document.querySelectorAll('.carta.certa').length === pares.length) {
+                            setTimeout(() => {
+                                alert('Parabéns! Você encontrou todos os pares!');
+                                tabuleiro.innerHTML = '';
+                                criarTabuleiro();
+                            }, 100);
+                        }
+                    } else {
+                        carta.classList.add('erro');
+                        primeiraCarta.classList.add('erro');
+
+                        setTimeout(() => {
+                            carta.classList.remove('erro');
+                            primeiraCarta.classList.remove('erro');
+                            esconder(primeiraCarta);
+                            esconder(carta);
+                            primeiraCarta = null;
+                            travado = false;
+                        }, 600);
+                    }
+                }, 500);
+            }
+        });
+
+        criarTabuleiro();
+    }
+
+    carregarImagens();
+</script>
+
+</body>
+</html>
